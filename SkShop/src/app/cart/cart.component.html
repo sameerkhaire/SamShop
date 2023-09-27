@@ -1,0 +1,149 @@
+<ng-container *ngIf="products.length!=0">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of products; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{item.title}}</td>
+                            <td><img style="width: 120px;" src="{{item.image}}" alt=""></td>
+                            <td style="width: 25%;">{{item.description}}</td>
+                            <th style="width: 12%;">{{item.price}}</th>
+                            <td style="width: 12%;"><button (click)="increment(i)" >+</button>{{item.quantity}} <button [disabled]="item.quantity === 1" (click)="decrement(i)" >-</button></td>
+                            <td style="width: 12%;">{{item.totalprice}}</td>
+                            <td>
+                                <button  class="btn btn-danger"(click)="removeItem(item)"><i class="fas fa-trash-alt"> Delete</i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td><button  class="btn btn-danger"(click)="emptyCartItem()">Empty Cart</button></td>
+                            <td><button routerLink="/" class="btn btn-primary">Shop More</button></td>
+                            <td><button class="btn btn-success">Checkout</button></td>
+                            <td><strong>Grand Total : ${{grandTotal}}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="products.length==0">
+    <div class="container">
+        <div class="card">
+            <h5 class="card-title">My Cart</h5>
+        </div>
+        <div class="center">
+            <img src="../../assets/Images/MainProduct/All Product.jfif" alt="">
+            <h4>Your cart is empty!</h4>
+            <h6>Add item to it now</h6>
+            <button routerLink="/" class="btn btn-primary">Shop Now</button>
+        </div>
+    </div>
+</ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="my-container mx-auto border border-dark">
+    <div class="p-4 border my-rounded-corner">
+        <h3 class="w-25 border text-center py-2 my-rounded-corner">Current Cart</h3>
+        <div class="mt-5">
+            <div class="d-grid w-50 mx-auto mb-3">
+                <button class="btn btn-outline-success fs-4" type="button" >Order</button>
+            </div>
+            <table class="table w-50 mx-auto table-bordered table-hover my-shadow">
+                <tbody>
+                    <tr>
+                        <td>Total Items</td>
+                        <td class="fs-5 fw-bold"> 5 </td>
+                    </tr>
+                    <tr>
+                        <td>Total Price</td>
+                        <td class="fs-5 fw-bold text-danger">10 </td>
+                    </tr>
+                    <tr>
+                        <td>Shipping Charges</td>
+                        <td class="fs-5 fw-bold text-danger">100</td>
+                    </tr>
+                    <tr>
+                        <td>Discount</td>
+                        <td class="fs-5 fw-bold text-success">-10%</td>
+                    </tr>
+                    <tr>
+                        <td>You Have to Pay</td>
+                        <td class="fs-5 fw-bold text-success">2000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="current-cart-items w-75 mx-auto mt-5">
+            <h4>Cart Items</h4>
+            <div class="row mt-4 g-0">
+                <div class="col-6 py-3 px-2" *ngFor="let cartItem of [1,1,1,1]">
+                    <app-product [view]="'currentitem'"></app-product>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 p-4 border my-rounded-corner">
+        <h3 class="w-25 border text-center py-2 mb-5 my-rounded-corner">Previous Carts</h3>
+
+        <div class="card mb-5" *ngFor="let cart of [1,1,1,1]">
+            <div class="card-header d-flex fw-bold justify-content-between align-items-center">
+                <span class="time">Ordered On :
+                    <span class="fs-5">{{1| date:"dd-MMM-YYYY"}}</span>
+                </span>
+                <span class="count">Items: {{11}}</span>
+                <span class="price">Price Paid :
+                    <span class="fs-5"> {{220}} </span>
+                </span>
+            </div>
+
+            <div class="cart-body px-4 py-2">
+                <div class="row g-0">
+                    <div class="col-2 px-2 py-2" *ngFor="let cartItem of [1,1,1,1]">
+                        <app-product></app-product>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

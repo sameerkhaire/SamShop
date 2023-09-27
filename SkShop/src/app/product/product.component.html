@@ -1,0 +1,190 @@
+<!-- <div class="card-top container-fluid">
+    <div class="container d-flex">
+        <div class="item">
+            <a >
+                <img src="https://rukminim1.flixcart.com/flap/128/128/image/f15c02bfeb02d15d.png?q=100" alt="">
+                <h6>All products</h6>
+            </a>
+        </div>
+        <div class="item">
+            <a >
+                <img src="https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100" alt="">
+                <h6>Electronics</h6>
+            </a>
+        </div>
+        <div class="item">
+            <a >
+                <img src="https://rukminim1.flixcart.com/flap/128/128/image/82b3ca5fb2301045.png?q=100" alt="">
+                <h6>Fashion</h6>
+            </a>
+        </div>
+        <div class="item">
+            <a >
+                <img style="width: 62px; margin-top: 5px;" src="https://rukminim1.flixcart.com/image/580/696/kkh6zrk0/jewellery-set/o/w/z/gt-ns-862-matushri-art-original-imafzt9teacakjyn.jpeg?q=50" alt="">
+                <h6>Jewllery</h6>
+            </a>
+        </div>
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor="let item of productList">
+            <div class="card col-md-3">
+                <img src="{{item.image}}" alt="">
+                <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.title}}</h5>
+                <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
+                <p><strong>Price:</strong> ${{item.price}}</p>
+                <button class="btn btn-primary"(click)="addToCart(item)" >Add to cart</button>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="grid-view" *ngIf="view === 'grid'">
+  <div class="card text-center">
+      <div class="card-header fw-bold fs-5 text-success">
+          Header
+      </div>
+
+      <div class="overflow-hidden d-flex justify-content-center align-items-center">
+          <img src="../../assets/Images/mobiles/10/1.jpg" alt=""
+               class="card-img-top" >
+      </div>
+
+      <div class="card-body">
+          <h5 class="card-title title"> title </h5>
+          <h6 class="card-subtitle my-2 text-primary"> products are available. </h6>
+          <p class="card-text description"> description </p>
+      </div>
+
+      <div class="card-body">
+          <h5 class="card-title text-success">
+               {{utilityService.applyDiscount(product.price, product.offer.discount)}} 
+              <span class="text-primary"> -20%
+              </span>
+          </h5>
+          <h6 class="card-subtitle text-danger text-decoration-line-through">
+            100
+          </h6>
+      </div>
+
+      <div class="card-footer d-grid gap-2">
+          <button type="button" class="btn btn-outline-success">
+              Add to Cart
+              <span >(Login First)</span>
+          </button>
+      </div>
+  </div>
+</div>
+
+<div class="list-view" *ngIf="view === 'list'">
+  <div class="card">
+      <div class="row g-0">
+          <div class="col-md-4 overflow-hidden d-flex justify-content-center align-items-center">
+              <img src="../../assets/Images/mobiles/10/1.jpg"
+                   class="img-fluid rounded-start" alt="Product Image" >
+          </div>
+          <div class="col d-flex flex-column">
+              <div class="card-header text-center">
+                  Header
+              </div>
+
+              <div class="card-body">
+                  <h5 class="card-title title">title </h5>
+                  <p class="card-text description">description</p>
+                  <h6 class="card-subtitle mb-3 text-primary">  products are available. </h6>
+              </div>
+
+              <div class="card-body">
+                  <h4 class="card-title text-muted">Pricing</h4>
+                  <h2 class="card-title text-success">
+                       {{utilityService.applyDiscount(product.price, product.offer.discount)}} 
+                      <span class="text-primary"> -20% </span>
+                  </h2>
+                  <h5 class="card-subtitle text-danger text-decoration-line-through">
+                    100
+                  </h5>
+              </div>
+
+              <div class="card-footer text-muted d-grid gap-2">
+                  <button type="button" class="btn btn-outline-success">
+                      Add to Cart
+                      <span >(Login First)</span>
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="cart-item-view" *ngIf="view === 'currentitem'">
+  <div class="card">
+      <div class="row g-0">
+
+          <div class="col-4 overflow-hidden d-flex justify-content-center align-items-center">
+              <img src="../../assets/Images/mobiles/10/1.jpg"
+                   class="img-fluid rounded-start" alt="Product Image" >
+          </div>
+          <div class="col-8">
+              <div class="card-body">
+                  <h5 class="card-title title"> title </h5>
+                  <h5 class="card-title text-success">
+ {{utilityService.applyDiscount(product.price, product.offer.discount)}} Final price
+                      <span class="text-primary"> 11 products are available </span>
+                  </h5>
+                  <h6 class="card-subtitle text-danger text-decoration-line-through">
+                      original price
+                  </h6>
+              </div>
+              <div class="card-footer text-muted d-grid gap-2">
+                <button class="btn btn-outline-danger" type="button">Remove From Cart</button>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</div>
+
+<div class="cart-item-view" *ngIf="view === 'prevcartitem'">
+  <div class="card text-center">
+
+      <div class="overflow-hidden d-flex justify-content-center align-items-center">
+          <img src="../../assets/Images/mobiles/10/1.jpg" alt=""
+               class="card-img-top">
+      </div>
+
+      <div class="card-body">
+          <h5 class="card-title title">title</h5>
+      </div>
+  </div>
+</div>  -->
